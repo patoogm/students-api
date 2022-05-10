@@ -15,12 +15,8 @@ const createStudent = async(req, res) =>{
 const getStudents = async (req, res) => {
   try {
     const students = await Student.find({})
-    const promo = students.filter((note) => note.value > 3)
-    const noPromo = students.filter((note) => note.value <= 3)
-    res.status(200).json({
-      promo,
-      noPromo
-    })
+
+    res.status(200).json(students)
   }
   catch (error) {
     return res.status(404).json({
